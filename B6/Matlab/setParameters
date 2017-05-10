@@ -1,0 +1,217 @@
+#!/usr/bin/perl
+
+$file = $ARGV[0];
+$numParams = $ARGV[1];
+@x =  @ARGV[2..(2+$numParams-1)];
+@mask = @ARGV[(2+$numParams)..$#ARGV];
+
+$section = '$eqparms';
+
+open(IN, "<$file") or die "cannot open file $file\n";
+$in_section = 0;
+$outputContent = "";
+$l1 = 0;
+$l2 = 0;
+$l3 = 0;
+$l4 = 0;
+$l5 = 0;
+$l6 = 0;
+$l7 = 0;
+$l8 = 0;
+$paramCount = 0;
+$matrixCount = 0;
+$xCount = 0;
+
+while (<IN>) {
+	$line = $_;
+	if ($in_section == 0) {
+		$outputContent .= $line;
+	}
+    chomp($line);
+	if (substr($line, 0, length($section)) eq $section) {
+		$in_section = 1;
+	}
+
+	if ($in_section == 1) {
+
+		if ($l1 == 1) {
+			@cake = split(' ',$line);
+			foreach my $peace (@cake) {
+				if ($mask[$paramCount] == 0) {
+					$outputContent .= $peace." ";
+				} else {
+					$outputContent .= $x[$xCount]." ";
+					$xCount++;
+				}
+				$paramCount++;
+			}
+			$outputContent.="\n";
+			$l1 = 0;		
+		}
+		if (substr($line, 0, length("promoter_strengths:")) eq "promoter_strengths:") {
+			$outputContent .= $line."\n";
+			$l1 = 1;
+		}
+
+		if ($l2 == 1) {
+			@cake = split(' ',$line);
+			foreach my $peace (@cake) {
+                #print "count=$paramCount maskvalue=".$mask[$paramCount]."\n";
+				if ($mask[$paramCount] == 0) {
+                    print "not changing ".$peace."\n";
+					$outputContent .= $peace." ";
+				} else {
+                    #print "changing ".$peace." to param:".$xCount." ".$x[$xCount]."\n";
+					$outputContent .= $x[$xCount]." ";
+					$xCount++;
+				}
+				$paramCount++;
+			}
+			$outputContent.="\n";			
+			if ($matrixCount == 3) {
+				$l2 = 0;				
+			} else {
+				$matrixCount++;
+			}
+		}
+		if (substr($line, 0, length("genetic_interconnect_matrix:")) eq "genetic_interconnect_matrix:") {
+			$outputContent .= $line."\n";			
+			$l2 = 1;
+			$matrixCount = 0;
+		}
+
+		if ($l3 == 1) {
+			@cake = split(' ',$line);
+			foreach my $peace (@cake) {
+				if ($mask[$paramCount] == 0) {
+					$outputContent .= $peace." ";
+				} else {
+					$outputContent .= $x[$xCount]." ";
+					$xCount++;
+				}
+				$paramCount++;
+			}		
+			$outputContent.="\n";		
+			if ($matrixCount == 3) {
+				$l3 = 0;				
+			} else {
+				$matrixCount++;
+			}
+		}
+		if (substr($line, 0, length("external_input_strengths:")) eq "external_input_strengths:") {
+			$outputContent .= $line."\n";			
+			$l3 = 1;
+			$matrixCount = 0
+		}
+
+
+		if ($l4 == 1) {
+			@cake = split(' ',$line);
+			foreach my $peace (@cake) {
+				if ($mask[$paramCount] == 0) {
+					$outputContent .= $peace." ";
+				} else {
+					$outputContent .= $x[$xCount]." ";
+					$xCount++;
+				}
+				$paramCount++;
+			}
+			$outputContent.="\n";
+			$l4 = 0;		
+		}
+		if (substr($line, 0, length("maternal_connection_strengths:")) eq "maternal_connection_strengths:") {
+			$outputContent .= $line."\n";			
+			$l4 = 1;
+		}
+
+		if ($l5 == 1) {
+			@cake = split(' ',$line);
+			foreach my $peace (@cake) {
+				if ($mask[$paramCount] == 0) {
+					$outputContent .= $peace." ";
+				} else {
+					$outputContent .= $x[$xCount]." ";
+					$xCount++;
+				}
+				$paramCount++;
+			}
+			$outputContent.="\n";
+			$l5 = 0;		
+		}
+		if (substr($line, 0, length("promoter_thresholds:")) eq "promoter_thresholds:") {
+			$outputContent .= $line."\n";
+			$l5 = 1;
+		}
+
+
+		if ($l6 == 1) {
+			@cake = split(' ',$line);
+			foreach my $peace (@cake) {
+				if ($mask[$paramCount] == 0) {
+					$outputContent .= $peace." ";
+				} else {
+					$outputContent .= $x[$xCount]." ";
+					$xCount++;
+				}
+				$paramCount++;
+			}
+			$outputContent.="\n";
+			$l6 = 0;		
+		}
+		if (substr($line, 0, length("diffusion_parameter(s):")) eq "diffusion_parameter(s):") {
+			$outputContent .= $line."\n";
+			$l6 = 1;
+		}
+
+		
+		if ($l7 == 1) {
+			@cake = split(' ',$line);
+			foreach my $peace (@cake) {
+				if ($mask[$paramCount] == 0) {
+					$outputContent .= $peace." ";
+				} else {
+					$outputContent .= $x[$xCount]." ";
+					$xCount++;
+				}
+				$paramCount++;
+			}
+			$outputContent.="\n";
+			$l7 = 0;		
+		}
+		if (substr($line, 0, length("protein_half_lives:")) eq "protein_half_lives:") {
+			$outputContent .= $line."\n";
+			$l7 = 1;
+		}
+		
+		if ($l8 == 1) {
+			@cake = split(' ',$line);
+			foreach my $peace (@cake) {
+				if ($mask[$paramCount] == 0) {
+					$outputContent .= $peace." ";
+				} else {
+					$outputContent .= $x[$xCount]." ";
+					$xCount++;
+				}
+				$paramCount++;
+			}
+			$outputContent.="\n";
+			$l8 = 0;		
+		}
+		if (substr($line, 0, length("translational_transcriptional_delays:")) eq "translational_transcriptional_delays:") {
+			$outputContent .= $line."\n";
+			$l8 = 1;
+		}
+
+	}
+
+	if ($in_section == 1 && substr($line, 0, 2) eq '$$') {		
+		$outputContent .= "\n".'$$'."\n";
+		$in_section = 0;
+	}
+}
+close (IN); 
+open(OUT, ">$file") or die "cannot open file $file\n";
+print OUT $outputContent;
+close (OUT); 
+
+exit(0);
