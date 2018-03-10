@@ -57,9 +57,6 @@ class B4Model:
         self.tryAddResidual(t, self.r.cg1p, 'G1P')
         self.tryAddResidual(t, self.r.cpg, '6PG')
         self.tryAddResidual(t, self.r.cfdp, 'FDP')
-        print('{}: PEP {} G6P {} PYR {} F6P {} GLCex {} G1P {} 6PG {} FDP {}'.format(t,
-            self.usage_map['PEP'], self.usage_map['G6P'], self.usage_map['PYR'], self.usage_map['F6P'],
-            self.usage_map['GLCex'], self.usage_map['G1P'], self.usage_map['6PG'], self.usage_map['FDP']))
 
     def tryAddResidual(self,t,predicted_value,identifier):
         ''' Append a residual to the list of residuals.
