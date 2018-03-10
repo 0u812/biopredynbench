@@ -97,7 +97,7 @@ G1P = reshape(np.fromstring('''
 299    0.70
 ''', dtype=np.dtype('d'), sep=' '))
 
-_6PG = reshape(np.fromstring('''
+x6PG = reshape(np.fromstring('''
   3.5  1.01
   4    0.92
  12    1.15
@@ -140,3 +140,6 @@ FDP = reshape(np.fromstring('''
 239.5  0.22
 300    0.20
 ''', dtype=np.dtype('d'), sep=' '))
+
+# all data
+data_quantities = [PEP, G6P, PYR, F6P, GLCex, G1P, x6PG, FDP]
