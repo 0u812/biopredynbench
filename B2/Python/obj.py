@@ -13,7 +13,6 @@ def valueAtTime(a,t):
     except IndexError:
         raise MissingValue
     except TypeError:
-        print(np.argwhere(a[:,0] == t))
         raise MissingValue
 
 class B4Model:
@@ -23,7 +22,6 @@ class B4Model:
     def __init__(self):
         self.r = RoadRunner('../SBML/b2.xml')
         self.residuals = []
-        print(self.r.getFloatingSpeciesIds())
 
         self.timepoints = np.unique(np.hstack(a[:,0] for a in data_quantities))
         self.reset()
@@ -77,7 +75,7 @@ class B4Model:
     def MSE(self):
         ''' Calc the MSE for all residuals.
         Call this after calculating all residuals.'''
-        r = numpy.array(self.residuals)
+        r = np.array(self.residuals)
         return (r**2).mean()
 
     def simulateToNextTime(self):
@@ -100,6 +98,7 @@ class B4Model:
             self.t = self.simulateToNextTime()
             self.calcResiduals(self.t)
             self.next_ti += 1
+        return self.MSE()
 
     def printDatapointUsage(self):
         ''' For debugging. Make sure every data point is
@@ -116,7 +115,6 @@ class B4Model:
         print('*** Total usage: {}/{} ({:.1f}%)'.format(total_used,total,100.*total_used/total))
 
 b4 = B4Model()
-print(b4.timepoints)
-print(b4.timepoints.shape[0])
-b4.calcObjective()
+mse = b4.calcObjective()
+print('MSE = {}'.format(mse))
 b4.printDatapointUsage()
