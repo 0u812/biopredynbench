@@ -683,6 +683,8 @@ ssGLC(a__x__EIICB) = 0.003;
   
         % Calculate the growth rate 'mu'
         mu = alphaGLC*p(a__p__bm__muGLC) + alphaACT*p(a__p__bm__muACT);
+        fprintf('mu = alphaGLC*p(a__p__bm__muGLC) + alphaACT*p(a__p__bm__muACT)');
+        fprintf('  %f = %f*%f + %f*%f', mu, alphaGLC, p(a__p__bm__muGLC), alphaACT, p(a__p__bm__muACT));
         
         % Calculate the first order rate constants of the seven biomass reactions
         k_bm_ACoA = alphaGLC*p(a__p__bm__GLC__ACoA) + alphaACT*p(a__p__bm__ACT__ACoA);
