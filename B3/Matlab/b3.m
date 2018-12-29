@@ -836,7 +836,9 @@ ssGLC(a__x__EIICB) = 0.003;
         f(a__f__g__acoa2act) = 0;
         
         % acs kinetics: Hill plus basal expression, substrate: Crpcamp
+        disp('g_acs = p(a__p__bm__k_expr)*mu*((1-x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n)))*p(a__p__g__acs__vcrp_unbound)+x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))*p(a__p__g__acs__vcrp_bound)) = ');
         f(a__f__g__acs) = p(a__p__bm__k_expr)*mu*((1-x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n)))*p(a__p__g__acs__vcrp_unbound)+x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))*p(a__p__g__acs__vcrp_bound));
+        stop;
 
         % akg2mal kinetics: Hill plus basal expression, substrate: Crpcamp
         f(a__f__g__akg2mal) = p(a__p__bm__k_expr)*mu*((1-x(a__x__CrpcAMP)^p(a__p__g__akg2mal__n)/(x(a__x__CrpcAMP)^p(a__p__g__akg2mal__n)+p(a__p__g__akg2mal__Kcrp)^p(a__p__g__akg2mal__n)))*p(a__p__g__akg2mal__vcrp_unbound)+x(a__x__CrpcAMP)^p(a__p__g__akg2mal__n)/(x(a__x__CrpcAMP)^p(a__p__g__akg2mal__n)+p(a__p__g__akg2mal__Kcrp)^p(a__p__g__akg2mal__n))*p(a__p__g__akg2mal__vcrp_bound));
