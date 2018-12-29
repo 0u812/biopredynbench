@@ -680,13 +680,13 @@ ssGLC(a__x__EIICB) = 0.003;
         % growth conditions
         alphaGLC = x(a__x__GLC)/(x(a__x__GLC)+p(a__p__pts__Kglc));
         alphaACT = x(a__x__ACT)/(x(a__x__ACT)+p(a__p__e__Acs__Kact))*(1-x(a__x__GLC)/(x(a__x__GLC)+p(a__p__pts__Kglc)));
-        fprintf('alphaGLC = x(a__x__GLC)/(x(a__x__GLC)+p(a__p__pts__Kglc))\n');
-        fprintf('  %f = %f/(%f+%f)\n', alphaGLC, x(a__x__GLC), x(a__x__GLC), p(a__p__pts__Kglc));
+%          fprintf('alphaGLC = x(a__x__GLC)/(x(a__x__GLC)+p(a__p__pts__Kglc))\n');
+%          fprintf('  %f = %f/(%f+%f)\n', alphaGLC, x(a__x__GLC), x(a__x__GLC), p(a__p__pts__Kglc));
   
         % Calculate the growth rate 'mu'
         mu = alphaGLC*p(a__p__bm__muGLC) + alphaACT*p(a__p__bm__muACT);
-        fprintf('mu = alphaGLC*p(a__p__bm__muGLC) + alphaACT*p(a__p__bm__muACT)\n');
-        fprintf('  %f = %f*%f + %f*%f\n', mu, alphaGLC, p(a__p__bm__muGLC), alphaACT, p(a__p__bm__muACT));
+%          fprintf('mu = alphaGLC*p(a__p__bm__muGLC) + alphaACT*p(a__p__bm__muACT)\n');
+%          fprintf('  %f = %f*%f + %f*%f\n', mu, alphaGLC, p(a__p__bm__muGLC), alphaACT, p(a__p__bm__muACT));
         
         % Calculate the first order rate constants of the seven biomass reactions
         k_bm_ACoA = alphaGLC*p(a__p__bm__GLC__ACoA) + alphaACT*p(a__p__bm__ACT__ACoA);
@@ -696,6 +696,7 @@ ssGLC(a__x__EIICB) = 0.003;
         k_bm_PEP = alphaGLC*p(a__p__bm__GLC__PEP) + alphaACT*p(a__p__bm__ACT__PEP);
         k_bm_PG3 = alphaGLC*p(a__p__bm__GLC__PG3) + alphaACT*p(a__p__bm__ACT__PG3);
         k_bm_PYR = alphaGLC*p(a__p__bm__GLC__PYR) + alphaACT*p(a__p__bm__ACT__PYR);
+        fprintf('k_bm_PYR = %f', k_bm_PYR);
         
         % Calculate biomass reaction rates with 1st order kinetics
         f([
@@ -819,6 +820,8 @@ ssGLC(a__x__EIICB) = 0.003;
         
         % PykF kinetics: MWC, substrate: PEP, activator: FBP
         f(a__f__e__PykF) = x(a__x__PykF)*p(a__p__e__PykF__kcat)*x(a__x__PEP)/p(a__p__e__PykF__Kpep)*(1+x(a__x__PEP)/p(a__p__e__PykF__Kpep))^(p(a__p__e__PykF__n)-1)/((1+x(a__x__PEP)/p(a__p__e__PykF__Kpep))^p(a__p__e__PykF__n)+p(a__p__e__PykF__L)/(1+x(a__x__FBP)/p(a__p__e__PykF__Kfbp))^p(a__p__e__PykF__n));
+        fprintf('f(a__f__e__PykF) = %f', f(a__f__e__PykF));
+        stop;
                
         
         %% Gene expression rates
@@ -846,13 +849,13 @@ ssGLC(a__x__EIICB) = 0.003;
         
         % acs kinetics: Hill plus basal expression, substrate: Crpcamp
         f(a__f__g__acs) = p(a__p__bm__k_expr)*mu*((1-x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n)))*p(a__p__g__acs__vcrp_unbound)+x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))*p(a__p__g__acs__vcrp_bound));
-        disp('g_acs = p(a__p__bm__k_expr)*mu*((1-x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n)))*p(a__p__g__acs__vcrp_unbound)+x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))*p(a__p__g__acs__vcrp_bound)) = ');
-        fprintf('  %f = %f*%f*(', f(a__f__g__acs), p(a__p__bm__k_expr), mu); % p(a__p__bm__k_expr)*mu
-        fprintf('1-%f^%f/(%f^%f+%f^%f)', x(a__x__CrpcAMP),p(a__p__g__acs__n),x(a__x__CrpcAMP),p(a__p__g__acs__n),p(a__p__g__acs__Kcrp),p(a__p__g__acs__n)); % 1-x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))
-        fprintf(')*%f+(', p(a__p__g__acs__vcrp_unbound)); %*p(a__p__g__acs__vcrp_unbound)+
-        fprintf('%f^%f/(%f^%f+%f^%f)*%f', x(a__x__CrpcAMP), p(a__p__g__acs__n), x(a__x__CrpcAMP), p(a__p__g__acs__n), p(a__p__g__acs__Kcrp), p(a__p__g__acs__n), p(a__p__g__acs__vcrp_bound)); %x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))*p(a__p__g__acs__vcrp_bound)
+%          disp('g_acs = p(a__p__bm__k_expr)*mu*((1-x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n)))*p(a__p__g__acs__vcrp_unbound)+x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))*p(a__p__g__acs__vcrp_bound)) = ');
+%          fprintf('  %f = %f*%f*(', f(a__f__g__acs), p(a__p__bm__k_expr), mu); % p(a__p__bm__k_expr)*mu
+%          fprintf('1-%f^%f/(%f^%f+%f^%f)', x(a__x__CrpcAMP),p(a__p__g__acs__n),x(a__x__CrpcAMP),p(a__p__g__acs__n),p(a__p__g__acs__Kcrp),p(a__p__g__acs__n)); % 1-x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))
+%          fprintf(')*%f+(', p(a__p__g__acs__vcrp_unbound)); %*p(a__p__g__acs__vcrp_unbound)+
+%          fprintf('%f^%f/(%f^%f+%f^%f)*%f', x(a__x__CrpcAMP), p(a__p__g__acs__n), x(a__x__CrpcAMP), p(a__p__g__acs__n), p(a__p__g__acs__Kcrp), p(a__p__g__acs__n), p(a__p__g__acs__vcrp_bound)); %x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))*p(a__p__g__acs__vcrp_bound)
 %          fprintf('\np(a__p__g__acs__n) = %f (index %d)\n', p(a__p__g__acs__n), a__p__g__acs__n);
-        stop;
+%          stop;
 
         % akg2mal kinetics: Hill plus basal expression, substrate: Crpcamp
         f(a__f__g__akg2mal) = p(a__p__bm__k_expr)*mu*((1-x(a__x__CrpcAMP)^p(a__p__g__akg2mal__n)/(x(a__x__CrpcAMP)^p(a__p__g__akg2mal__n)+p(a__p__g__akg2mal__Kcrp)^p(a__p__g__akg2mal__n)))*p(a__p__g__akg2mal__vcrp_unbound)+x(a__x__CrpcAMP)^p(a__p__g__akg2mal__n)/(x(a__x__CrpcAMP)^p(a__p__g__akg2mal__n)+p(a__p__g__akg2mal__Kcrp)^p(a__p__g__akg2mal__n))*p(a__p__g__akg2mal__vcrp_bound));
