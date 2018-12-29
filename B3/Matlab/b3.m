@@ -37,6 +37,8 @@ p_complete(176)       = 2.8e-5;
 p_complete(177)       = 2e4;
 
 p = p_complete;
+
+fprintf('starting value for a__p__g__acs__n: %f (%d index)', pa__p__g__acs__n(a__p__g__acs__n), a__p__g__acs__n);
    
    
 %% Definition of Aliases
@@ -840,7 +842,7 @@ ssGLC(a__x__EIICB) = 0.003;
         disp('g_acs = p(a__p__bm__k_expr)*mu*((1-x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n)))*p(a__p__g__acs__vcrp_unbound)+x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))*p(a__p__g__acs__vcrp_bound)) = ');
         fprintf('  %f = %f*%f*(', f(a__f__g__acs), p(a__p__bm__k_expr), mu); % p(a__p__bm__k_expr)*mu
         fprintf('1-%f^%f/(%f^%f+%f^%f)', x(a__x__CrpcAMP),p(a__p__g__acs__n),x(a__x__CrpcAMP),p(a__p__g__acs__n),p(a__p__g__acs__Kcrp),p(a__p__g__acs__n)); % 1-x(a__x__CrpcAMP)^p(a__p__g__acs__n)/(x(a__x__CrpcAMP)^p(a__p__g__acs__n)+p(a__p__g__acs__Kcrp)^p(a__p__g__acs__n))
-        fprintf('p(a__p__g__acs__n) = %f (index %d)', p(a__p__g__acs__n), a__p__g__acs__n);
+        fprintf('\np(a__p__g__acs__n) = %f (index %d)\n', p(a__p__g__acs__n), a__p__g__acs__n);
         stop;
 
         % akg2mal kinetics: Hill plus basal expression, substrate: Crpcamp
