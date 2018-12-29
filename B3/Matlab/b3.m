@@ -2,45 +2,46 @@ function [dxdt, x, p] = b3(t, x, p)
 
     
 %% p has 178 parameters, but originally it had 193. Re-define indices:
-pfix                  = p;
-p_complete            = zeros(1,193);
-
-p_complete(1:4)       = pfix(1:4);
-p_complete(6:16)      = pfix(5:15);
-p_complete(18:28)     = pfix(16:26);
-p_complete(30:49)     = pfix(27:46);
-p_complete(51:59)     = pfix(47:55);
-p_complete(61:67)     = pfix(56:62);
-p_complete(69:76)     = pfix(63:70);
-p_complete(78:82)     = pfix(71:75);
-p_complete(84:87)     = pfix(76:79);
-p_complete(89:92)     = pfix(80:83);
-p_complete(94:97)     = pfix(84:87);
-p_complete(99:118)    = pfix(88:107);
-p_complete(121:175)   = pfix(108:162);
-p_complete(178:193)   = pfix(163:178);   
-
-p_complete(5)         = 4;
-p_complete(17)        = 2;
-p_complete(29)        = 2;
-p_complete(50)        = 4;
-p_complete(60)        = 2;
-p_complete(68)        = 1.33;
-p_complete(77)        = 2.65;
-p_complete(83)        = 4;
-p_complete(88)        = 3;
-p_complete(93)        = 2;
-p_complete(98)        = 4;
-p_complete(119)       = 0.3;
-p_complete(120)       = 0.03;
-p_complete(176)       = 2.8e-5;
-p_complete(177)       = 2e4;
+%  pfix                  = p;
+%  p_complete            = zeros(1,193);
+%
+%  p_complete(1:4)       = pfix(1:4);
+%  p_complete(6:16)      = pfix(5:15);
+%  p_complete(18:28)     = pfix(16:26);
+%  p_complete(30:49)     = pfix(27:46);
+%  p_complete(51:59)     = pfix(47:55);
+%  p_complete(61:67)     = pfix(56:62);
+%  p_complete(69:76)     = pfix(63:70);
+%  p_complete(78:82)     = pfix(71:75);
+%  p_complete(84:87)     = pfix(76:79);
+%  p_complete(89:92)     = pfix(80:83);
+%  p_complete(94:97)     = pfix(84:87);
+%  p_complete(99:118)    = pfix(88:107);
+%  p_complete(121:175)   = pfix(108:162);
+%  p_complete(178:193)   = pfix(163:178);
+%
+%  p_complete(5)         = 4;
+%  p_complete(17)        = 2;
+%  p_complete(29)        = 2;
+%  p_complete(50)        = 4;
+%  p_complete(60)        = 2;
+%  p_complete(68)        = 1.33;
+%  p_complete(77)        = 2.65;
+%  p_complete(83)        = 4;
+%  p_complete(88)        = 3;
+%  p_complete(93)        = 2;
+%  p_complete(98)        = 4;
+%  p_complete(119)       = 0.3;
+%  p_complete(120)       = 0.03;
+%  p_complete(176)       = 2.8e-5;
+%  p_complete(177)       = 2e4;
 
 p = p_complete;
 
+%fprintf('size of pfix')
 a__p__g__acs__n = 133
 fprintf('starting value for a__p__g__acs__n: %f (%d index)\n', p(a__p__g__acs__n), a__p__g__acs__n);
-fprintf('  pfix at a__p__g__acs__n: %f (%d index)\n', pfix(a__p__g__acs__n), a__p__g__acs__n);
+%  fprintf('  pfix at a__p__g__acs__n: %f (%d index)\n', pfix(a__p__g__acs__n), a__p__g__acs__n);
    
    
 %% Definition of Aliases
