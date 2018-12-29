@@ -696,7 +696,8 @@ ssGLC(a__x__EIICB) = 0.003;
         k_bm_PEP = alphaGLC*p(a__p__bm__GLC__PEP) + alphaACT*p(a__p__bm__ACT__PEP);
         k_bm_PG3 = alphaGLC*p(a__p__bm__GLC__PG3) + alphaACT*p(a__p__bm__ACT__PG3);
         k_bm_PYR = alphaGLC*p(a__p__bm__GLC__PYR) + alphaACT*p(a__p__bm__ACT__PYR);
-        fprintf('k_bm_PYR = %f\n', k_bm_PYR);
+        fprintf('k_bm_PYR = alphaGLC*p(a__p__bm__GLC__PYR) + alphaACT*p(a__p__bm__ACT__PYR)\n');
+        fprintf('  %f = %f*%f + %f*%f\n', k_bm_PYR, alphaGLC, p(a__p__bm__GLC__PYR), alphaACT, p(a__p__bm__ACT__PYR))
         
         % Calculate biomass reaction rates with 1st order kinetics
         f([
