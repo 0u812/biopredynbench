@@ -680,8 +680,8 @@ ssGLC(a__x__EIICB) = 0.003;
         % growth conditions
         alphaGLC = x(a__x__GLC)/(x(a__x__GLC)+p(a__p__pts__Kglc));
         alphaACT = x(a__x__ACT)/(x(a__x__ACT)+p(a__p__e__Acs__Kact))*(1-x(a__x__GLC)/(x(a__x__GLC)+p(a__p__pts__Kglc)));
-%          fprintf('alphaGLC = x(a__x__GLC)/(x(a__x__GLC)+p(a__p__pts__Kglc))\n');
-%          fprintf('  %f = %f/(%f+%f)\n', alphaGLC, x(a__x__GLC), x(a__x__GLC), p(a__p__pts__Kglc));
+        fprintf('alphaGLC = x(a__x__GLC)/(x(a__x__GLC)+p(a__p__pts__Kglc))\n');
+        fprintf('  %f = %f/(%f+%f)\n', alphaGLC, x(a__x__GLC), x(a__x__GLC), p(a__p__pts__Kglc));
   
         % Calculate the growth rate 'mu'
         mu = alphaGLC*p(a__p__bm__muGLC) + alphaACT*p(a__p__bm__muACT);
