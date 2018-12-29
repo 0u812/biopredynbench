@@ -36,7 +36,7 @@ function [dxdt, x, p] = b3(t, x, p)
 %  p_complete(176)       = 2.8e-5;
 %  p_complete(177)       = 2e4;
 
-p = p_complete;
+%  p = p_complete;
 
 %fprintf('size of pfix')
 a__p__g__acs__n = 133
