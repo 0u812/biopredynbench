@@ -39,7 +39,7 @@ p_complete(177)       = 2e4;
 p = p_complete;
 
 a__p__g__acs__n = 133
-fprintf('starting value for a__p__g__acs__n: %f (%d index)', pa__p__g__acs__n(a__p__g__acs__n), a__p__g__acs__n);
+fprintf('starting value for a__p__g__acs__n: %f (%d index)', p(a__p__g__acs__n), a__p__g__acs__n);
    
    
 %% Definition of Aliases
