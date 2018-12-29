@@ -822,6 +822,7 @@ ssGLC(a__x__EIICB) = 0.003;
         % PykF kinetics: MWC, substrate: PEP, activator: FBP
         f(a__f__e__PykF) = x(a__x__PykF)*p(a__p__e__PykF__kcat)*x(a__x__PEP)/p(a__p__e__PykF__Kpep)*(1+x(a__x__PEP)/p(a__p__e__PykF__Kpep))^(p(a__p__e__PykF__n)-1)/((1+x(a__x__PEP)/p(a__p__e__PykF__Kpep))^p(a__p__e__PykF__n)+p(a__p__e__PykF__L)/(1+x(a__x__FBP)/p(a__p__e__PykF__Kfbp))^p(a__p__e__PykF__n));
         fprintf('f(a__f__e__PykF) = %f\n', f(a__f__e__PykF));
+        fprintf('  %f = %f*%f*%f/%f*(1+%f/%f)^(%f-1)/((1+%f/%f)^%f+%f/(1+%f/%f)^%f)', f(a__f__e__PykF), x(a__x__PykF), p(a__p__e__PykF__kcat), x(a__x__PEP), p(a__p__e__PykF__Kpep), x(a__x__PEP), p(a__p__e__PykF__Kpep), p(a__p__e__PykF__n),x(a__x__PEP),p(a__p__e__PykF__Kpep),p(a__p__e__PykF__n),p(a__p__e__PykF__L),x(a__x__FBP),p(a__p__e__PykF__Kfbp),p(a__p__e__PykF__n));
         stop;
                
         
