@@ -969,7 +969,6 @@ ssGLC(a__x__EIICB) = 0.003;
         f(a__f__d__MAL) = mu*x(a__x__MAL);
         f(a__f__d__OAA) = mu*x(a__x__OAA);
         fprintf('f(a__f__d__OAA) = %f\n', f(a__f__d__OAA));
-        stop;
         f(a__f__d__PEP) = mu*x(a__x__PEP);
         f(a__f__d__PG3) = mu*x(a__x__PG3);
         f(a__f__d__PYR) = mu*x(a__x__PYR);
@@ -997,6 +996,8 @@ ssGLC(a__x__EIICB) = 0.003;
         
 
        dxdt = S*f';  % return the state derivatives dx = S*f' ...
+       fprintf('OAA" = %f\n', dxdt(a__x__OAA));
+       stop;
          
         
     end % of nested function ecoliOK_core
