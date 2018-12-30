@@ -675,7 +675,7 @@ ssGLC(a__x__EIICB) = 0.003;
         % growth conditions
         alphaGLC = x(a__x__GLC)/(x(a__x__GLC)+p(a__p__pts__Kglc));
         alphaACT = x(a__x__ACT)/(x(a__x__ACT)+p(a__p__e__Acs__Kact))*(1-x(a__x__GLC)/(x(a__x__GLC)+p(a__p__pts__Kglc)));
-        fprintf('alphaACT = %f = %f/(%f+%f)*(1-%f/(%f+%f))', alphaACT, x(a__x__ACT), x(a__x__ACT), p(a__p__e__Acs__Kact), x(a__x__GLC), x(a__x__GLC), p(a__p__pts__Kglc));
+        fprintf('alphaACT = %f = %f/(%f+%f)*(1-%f/(%f+%f))\n', alphaACT, x(a__x__ACT), x(a__x__ACT), p(a__p__e__Acs__Kact), x(a__x__GLC), x(a__x__GLC), p(a__p__pts__Kglc));
   
         % Calculate the growth rate 'mu'
         mu = alphaGLC*p(a__p__bm__muGLC) + alphaACT*p(a__p__bm__muACT);
@@ -718,6 +718,7 @@ ssGLC(a__x__EIICB) = 0.003;
         % Calculate the actual steady state levels of MaeAB and Ppc
         SS_MaeAB = alphaGLC*ssGLC(a__x__MaeAB) + alphaACT*ssACT(a__x__MaeAB);
         SS_Ppc = alphaGLC*ssGLC(a__x__Ppc) + alphaACT*ssACT(a__x__Ppc);
+        fprintf('SS_Ppc = %f = %f*%f + %f*%f', SS_Ppc, alphaGLC, ssGLC(a__x__Ppc), alphaACT, ssACT(a__x__Ppc));
      
         
         %% Protein phosphorylation rates
