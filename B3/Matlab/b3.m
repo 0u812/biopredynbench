@@ -808,7 +808,6 @@ ssGLC(a__x__EIICB) = 0.003;
         % Ppc kinetics: MWC, substrate: PEP, activator: FBP
         f(a__f__e__Ppc) = x(a__x__Ppc)*p(a__p__e__Ppc__kcat)*x(a__x__PEP)/p(a__p__e__Ppc__Kpep)*(1+x(a__x__PEP)/p(a__p__e__Ppc__Kpep))^(p(a__p__e__Ppc__n)-1)/((1+x(a__x__PEP)/p(a__p__e__Ppc__Kpep))^p(a__p__e__Ppc__n)+p(a__p__e__Ppc__L)/(1+x(a__x__FBP)/p(a__p__e__Ppc__Kfbp))^p(a__p__e__Ppc__n));
         fprintf('f(a__f__e__Ppc) = %f\n', f(a__f__e__Ppc));
-        stop;
         
         % PpsA kinetics: MWC, substrate: PYR, inhibitor: PEP
         f(a__f__e__PpsA) = x(a__x__PpsA)*p(a__p__e__PpsA__kcat)*x(a__x__PYR)/p(a__p__e__PpsA__Kpyr)*(1+x(a__x__PYR)/p(a__p__e__PpsA__Kpyr))^(p(a__p__e__PpsA__n)-1)/((1+x(a__x__PYR)/p(a__p__e__PpsA__Kpyr))^p(a__p__e__PpsA__n)+p(a__p__e__PpsA__L)*(1+x(a__x__PEP)/p(a__p__e__PpsA__Kpep))^p(a__p__e__PpsA__n));
@@ -969,6 +968,8 @@ ssGLC(a__x__EIICB) = 0.003;
         f(a__f__d__ICT) = mu*x(a__x__ICT);
         f(a__f__d__MAL) = mu*x(a__x__MAL);
         f(a__f__d__OAA) = mu*x(a__x__OAA);
+        fprintf('f(a__f__d__OAA) = %f\n', f(a__f__d__OAA));
+        stop;
         f(a__f__d__PEP) = mu*x(a__x__PEP);
         f(a__f__d__PG3) = mu*x(a__x__PG3);
         f(a__f__d__PYR) = mu*x(a__x__PYR);
