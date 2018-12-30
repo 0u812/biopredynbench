@@ -783,7 +783,7 @@ ssGLC(a__x__EIICB) = 0.003;
         % GltA kinetics: Two-substrate MM, substrates: OAA, ACoA,
         % competitive inhibitor: AKG
         f(a__f__e__GltA) = x(a__x__GltA)*p(a__p__e__GltA__kcat)*x(a__x__OAA)*x(a__x__ACoA)/((1+x(a__x__AKG)/p(a__p__e__GltA__Kakg))*p(a__p__e__GltA__Koaaacoa)*p(a__p__e__GltA__Kacoa)+p(a__p__e__GltA__Kacoa)*x(a__x__OAA)+(1+x(a__x__AKG)/p(a__p__e__GltA__Kakg))*p(a__p__e__GltA__Koaa)*x(a__x__ACoA)+x(a__x__OAA)*x(a__x__ACoA));
-        fprintf('f(a__f__e__GltA) = %f\n', f(a__f__e__GltA));
+%          fprintf('f(a__f__e__GltA) = %f\n', f(a__f__e__GltA));
         
         % Icd kinetics: MWC, substrate: ICT, inhibitor: PEP
         f(a__f__e__Icd) = x(a__x__Icd)*p(a__p__e__Icd__kcat)*x(a__x__ICT)/p(a__p__e__Icd__Kict)*(1+x(a__x__ICT)/p(a__p__e__Icd__Kict))^(p(a__p__e__Icd__n)-1)/((1+x(a__x__ICT)/p(a__p__e__Icd__Kict))^p(a__p__e__Icd__n)+p(a__p__e__Icd__L)*(1+x(a__x__PEP)/p(a__p__e__Icd__Kpep))^p(a__p__e__Icd__n));
@@ -793,11 +793,11 @@ ssGLC(a__x__EIICB) = 0.003;
         
         % Mdh kinetics: Hill, substrate: MAL
         f(a__f__e__Mdh) = x(a__x__Mdh)*p(a__p__e__Mdh__kcat)*x(a__x__MAL)^p(a__p__e__Mdh__n)/(x(a__x__MAL)^p(a__p__e__Mdh__n)+p(a__p__e__Mdh__Kmal)^p(a__p__e__Mdh__n));
-        fprintf('f(a__f__e__Mdh) = %f\n', f(a__f__e__Mdh));
+%          fprintf('f(a__f__e__Mdh) = %f\n', f(a__f__e__Mdh));
         
         % PckA kinetics: MM, substrate: OAA, competitive inhibitor: PEP
         f(a__f__e__PckA) = x(a__x__PckA)*p(a__p__e__PckA__kcat)*x(a__x__OAA)/(x(a__x__OAA)+p(a__p__e__PckA__Koaa)*(1+x(a__x__PEP)/p(a__p__e__PckA__Kpep)));
-        fprintf('f(a__f__e__PckA) = %f\n', f(a__f__e__PckA));
+%          fprintf('f(a__f__e__PckA) = %f\n', f(a__f__e__PckA));
         
         % Pdh kinetics: MWC, substrate: PYR, inhibitors: GLX, PYR
         f(a__f__e__Pdh) = x(a__x__Pdh)*p(a__p__e__Pdh__kcat)*x(a__x__PYR)/p(a__p__e__Pdh__Kpyr)*(1+x(a__x__PYR)/p(a__p__e__Pdh__Kpyr))^(p(a__p__e__Pdh__n)-1)/((1+x(a__x__PYR)/p(a__p__e__Pdh__Kpyr))^p(a__p__e__Pdh__n)+p(a__p__e__Pdh__L)*(1+x(a__x__GLX)/p(a__p__e__Pdh__Kglx)+x(a__x__PYR)/p(a__p__e__Pdh__KpyrI))^p(a__p__e__Pdh__n));
@@ -807,7 +807,7 @@ ssGLC(a__x__EIICB) = 0.003;
         
         % Ppc kinetics: MWC, substrate: PEP, activator: FBP
         f(a__f__e__Ppc) = x(a__x__Ppc)*p(a__p__e__Ppc__kcat)*x(a__x__PEP)/p(a__p__e__Ppc__Kpep)*(1+x(a__x__PEP)/p(a__p__e__Ppc__Kpep))^(p(a__p__e__Ppc__n)-1)/((1+x(a__x__PEP)/p(a__p__e__Ppc__Kpep))^p(a__p__e__Ppc__n)+p(a__p__e__Ppc__L)/(1+x(a__x__FBP)/p(a__p__e__Ppc__Kfbp))^p(a__p__e__Ppc__n));
-        fprintf('f(a__f__e__Ppc) = %f\n', f(a__f__e__Ppc));
+%          fprintf('f(a__f__e__Ppc) = %f\n', f(a__f__e__Ppc));
         
         % PpsA kinetics: MWC, substrate: PYR, inhibitor: PEP
         f(a__f__e__PpsA) = x(a__x__PpsA)*p(a__p__e__PpsA__kcat)*x(a__x__PYR)/p(a__p__e__PpsA__Kpyr)*(1+x(a__x__PYR)/p(a__p__e__PpsA__Kpyr))^(p(a__p__e__PpsA__n)-1)/((1+x(a__x__PYR)/p(a__p__e__PpsA__Kpyr))^p(a__p__e__PpsA__n)+p(a__p__e__PpsA__L)*(1+x(a__x__PEP)/p(a__p__e__PpsA__Kpep))^p(a__p__e__PpsA__n));
@@ -901,6 +901,7 @@ ssGLC(a__x__EIICB) = 0.003;
         
         % ppc kinetics: growth rate- dependent constitutive expression
         f(a__f__g__ppc) = (mu+p(a__p__d__k_degr))*SS_Ppc;
+        fprintf('f(a__f__g__ppc) = %f\n', f(a__f__g__ppc));
         
         % ppsA kinetics: MM plus basal expression, substrate: Cra
         f(a__f__g__ppsA) = p(a__p__bm__k_expr)*mu*((1-x(a__x__Cra)/(x(a__x__Cra)+p(a__p__g__ppsA__Kcra)))*p(a__p__g__ppsA__vcra_unbound)+x(a__x__Cra)/(x(a__x__Cra)+p(a__p__g__ppsA__Kcra))*p(a__p__g__ppsA__vcra_bound));
@@ -948,6 +949,7 @@ ssGLC(a__x__EIICB) = 0.003;
         f(a__f__d__PdhRPYR) = 0;
         f(a__f__d__PfkA) = (mu+p(a__p__d__k_degr))*x(a__x__PfkA);
         f(a__f__d__Ppc)  = (mu+p(a__p__d__k_degr))*x(a__x__Ppc);
+        fprintf('f(a__f__d__Ppc) = %f\n', f(a__f__d__Ppc));
         f(a__f__d__PpsA) = (mu+p(a__p__d__k_degr))*x(a__x__PpsA);
         f(a__f__d__PykF) = (mu+p(a__p__d__k_degr))*x(a__x__PykF);
         f(a__f__d__EIIA) = 0;
@@ -968,7 +970,7 @@ ssGLC(a__x__EIICB) = 0.003;
         f(a__f__d__ICT) = mu*x(a__x__ICT);
         f(a__f__d__MAL) = mu*x(a__x__MAL);
         f(a__f__d__OAA) = mu*x(a__x__OAA);
-        fprintf('f(a__f__d__OAA) = %f\n', f(a__f__d__OAA));
+%          fprintf('f(a__f__d__OAA) = %f\n', f(a__f__d__OAA));
         f(a__f__d__PEP) = mu*x(a__x__PEP);
         f(a__f__d__PG3) = mu*x(a__x__PG3);
         f(a__f__d__PYR) = mu*x(a__x__PYR);
@@ -996,7 +998,8 @@ ssGLC(a__x__EIICB) = 0.003;
         
 
        dxdt = S*f';  % return the state derivatives dx = S*f' ...
-       fprintf('OAA" = %f\n', dxdt(a__x__OAA));
+%         fprintf('OAA" = %f\n', dxdt(a__x__OAA));
+       fprintf('PPC" = %f\n', dxdt(a__x__Ppc));
        stop;
          
         
